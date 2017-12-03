@@ -50,6 +50,18 @@ def find_similar_words(book, word = 'monstrous'):
     print(book.similar(word), '\n')
 
 
+def find_common_context(book, word1 = 'monstrous', word2 = 'very'):
+    # Returns the context where two words appear.
+    print('\n','Contexts wher two words appear on', book.name, '\n')
+    print(book.common_contexts([word1, word2]), '\n')
+
+
+def plot_changes_in_use_of_words(book, words):
+    # Dispersion plot of the use of natural language in different contexts or situations. For example,
+    # the use of certain words used by Presidents over the years.
+    book.dispersion_plot(words)
+
+
 if __name__ == '__main__':
     # Observe the different connotations in the use of the word 'monstrous' by Melville and Austen
     find_occurrences(text1)
@@ -57,3 +69,10 @@ if __name__ == '__main__':
 
     find_similar_words(text1)
     find_similar_words(text2)
+
+    # Observe that Melville doesn't use 'monstrous' followed by 'very'
+    find_common_context(text1)
+    # However, observe that Austen does.
+    # This call should return: a_pretty am_glad a_lucky is_pretty be_glad
+    # She uses 'a very pretty' and 'a very monstrous'.
+    find_common_context(text2)
